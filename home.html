@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" >
+<meta name="viewport" content="width=device-width,initial-scale=1" >
+<title>Apsonic – Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --brand-green: #1fa348;
+    --brand-green-dark: #0f7a32;
+    --brand-orange: #ff6b35;
+    --brand-orange-dark: #e55a2b;
+    --dark: #222;
+    --light: #ffffff;
+    --muted: #e9e9e9;
+    --max-width: 1200px;
+    --container-padding: 20px;
+    --messenger-blue: #0084ff;
+    --messenger-gray: #e4e6eb;
+}
+
+/* RESET */
+* {box-sizing: border-box;}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    color: #222;
+}
+
+/* TOP BAR */
+.topbar {
+    background: #111;
+    color: #fff;
+    padding: 6px var(--container-padding);
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    font-size: 13px;
+}
+.topbar a {color: #ccc; text-decoration: none;}
+
+/* GLASSY HEADER */
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.28);
+    padding: 18px var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    height: 50px;
+    max-height: 50px;
+    width: auto;
+}
+
+/* HEADER NAVIGATION */
+.header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.header-nav a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    color: #0d561f;
+    transition: color 0.3s ease;
+}
+.header-nav a:hover {
+    color: var(--brand-green);
+}
+
+/* MOBILE MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    padding: 8px;
+    background: none;
+    border: none;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--brand-green);
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .header-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .header-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .header-nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* SEARCH BOX */
+.search input {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
+
+/* NAVIGATION */
+nav.main-nav {
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+nav .nav-inner {
+    max-width: var(--max-width);
+    margin: auto;
+    display: flex;
+    gap: 14px;
+    padding: 10px var(--container-padding);
+}
+nav .nav-inner a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    color: #0d561f;
+}
+nav .nav-inner a:hover {
+    color: var(--brand-green);
+}
+
+/* HERO SECTION WITH VIDEO */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 650px;
+    overflow: hidden;
+}
+.hero video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 5;
+}
+.hero .hero-caption {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(0,0,0,0.8);
+}
+.hero .hero-caption h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: 2px;
+}
+.hero .hero-caption h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 10px 0 0 0;
+    line-height: 0.9;
+    letter-spacing: 2px;
+}
+
+/* SECTION HEADING */
+.section-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--brand-green);
+    margin: 40px 0 20px 0;
+    letter-spacing: 3px;
+}
+
+/* COMPACT PROMO VIDEOS */
+.promo-strip {
+    position: relative;
+    color: #fff;
+    padding: 30px 20px;
+}
+
+.promo-strip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('flags.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.promo-strip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 163, 72, 0.3);
+    z-index: 2;
+}
+
+.promo-inner {
+    position: relative;
+    max-width: var(--max-width);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    z-index: 3;
+}
+
+.promo-card {
+    position: relative;
+    height: 280px;
+    width: 280px;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.promo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.promo-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.promo-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    background: var(--brand-orange);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.promo-button:hover {
+    background: var(--brand-orange-dark);
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* FEATURED PRODUCTS */
+.section {
+    max-width: var(--max-width);
+    margin: 30px auto;
+    padding: 0 var(--container-padding);
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+.card {
+    background: #fff;
+    padding: 14px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+}
+
+/* ADD TO CART BUTTON */
+.btn-add {
+    background: var(--brand-green);
+    display: inline-block;
+    padding: 8px 12px;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* SEARCH BAR FOR PRODUCTS */
+#searchBox {
+    width: 260px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
+
+/* LOCATION MAP SECTION */
+.location-section {
+    max-width: var(--max-width);
+    margin: 60px auto;
+    padding: 0 var(--container-padding);
+}
+
+.location-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--brand-green);
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+}
+
+.map-container {
+    position: relative;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background: #f0f0f0;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%);
+}
+
+.map-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 300px;
+}
+
+.map-overlay h3 {
+    margin: 0 0 10px 0;
+    color: var(--brand-green);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.map-overlay p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.map-overlay i {
+    color: var(--brand-green);
+    width: 20px;
+    margin-right: 8px;
+}
+
+/* MODERN FOOTER */
+footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ddd;
+    padding: 60px 20px 20px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    color: var(--brand-green);
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #bbb;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--brand-orange);
+}
+
+.footer-section .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.footer-section .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.footer-section .social-icons a:hover {
+    background: var(--brand-orange);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+/* RESPONSIVE FOOTER */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* FLOATING ACTION BUTTONS */
+.hover-buttons {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    left: 20px;
+    right: 20px;
+    z-index: 1000;
+    gap: 15px;
+}
+
+.hover-button {
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+.hover-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.hover-button.whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.hover-button i {
+    font-size: 20px;
+}
+
+/* MESSENGER-STYLE CHAT SECTION */
+.chat-section {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: white;
+    border-radius: 16px;
+    width: 360px;
+    max-width: calc(100vw - 40px);
+    height: 500px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+    z-index: 1001;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.chat-header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.chat-header-title i {
+    font-size: 20px;
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.chat-close:hover {
+    opacity: 1;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message.bot .message-bubble {
+    background: var(--messenger-gray);
+    color: #000;
+    border-bottom-left-radius: 4px;
+}
+
+.message.user .message-bubble {
+    background: var(--messenger-blue);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #65676b;
+    margin-top: 4px;
+}
+
+.chat-input-area {
+    padding: 12px 16px;
+    background: white;
+    border-top: 1px solid #e4e6eb;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
+    background: #f0f2f5;
+    border-radius: 20px;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-input-area input:focus {
+    background: #e4e6eb;
+}
+
+.send-button {
+    background: var(--messenger-blue);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.send-button:hover {
+    background: #0073e6;
+    transform: scale(1.05);
+}
+
+.send-button:active {
+    transform: scale(0.95);
+}
+
+.typing-indicator {
+    display: none;
+    padding: 10px 14px;
+    background: var(--messenger-gray);
+    border-radius: 18px;
+    width: fit-content;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background: #90949c;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+    margin-right: 0;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-8px);
+    }
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 900px) {
+    .promo-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .promo-card {
+        height: 180px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .promo-card {
+        height: 200px;
+        width: 200px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chat-section {
+        right: 10px;
+        bottom: 80px;
+        width: calc(100vw - 20px);
+        height: 450px;
+    }
+
+    .hover-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        left: auto;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .hover-button {
+        font-size: 12px;
+        padding: 0 15px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-card {
+        height: 160px;
+        width: 160px;
+        border-radius: 12px;
+    }
+    .promo-card video {
+        border-radius: 12px;
+    }
+    .promo-button {
+        font-size: 11px;
+        padding: 6px 14px;
+        bottom: 15px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hover-button {
+        height: 45px;
+        font-size: 11px;
+        padding: 0 12px;
+    }
+
+    .hover-button i {
+        font-size: 16px;
+    }
+
+    .section-heading {
+        font-size: 1.8rem;
+    }
+
+    .map-overlay {
+        position: static;
+        margin: 15px;
+        max-width: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- GLASS HEADER -->
+<header class="site-header">
+    <div class="logo">
+        <img src="apsonic.png" alt="APSONIC" >
+    </div>
+    <nav class="header-nav">
+        <a href="#hero">HOME</a>
+        <a href="#featured-products">ABOUT</a>
+        <a href="#featured-products">SHOP</a>
+
+    </nav>
+    <button class="menu-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- HERO SECTION WITH VIDEO -->
+<section class="hero" id="hero">
+    <video autoplay muted loop>
+        <source src="homevid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-caption">
+        <h1>Good Quality</h1>
+        <h2>Good Life.</h2>
+    </div>
+</section>
+
+<!-- SECTION HEADING -->
+<h2 class="section-heading">OUR PRODUCTS</h2>
+
+<!-- ENHANCED LARGE PROMO VIDEOS -->
+<section class="promo-strip">
+    <div class="promo-inner">
+        <div class="promo-card">
+            <video autoplay muted loop>
+                <source src="2video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="Models 1.pdf" target="_blank" class="promo-button">View Products</a>
+        </div>
+        <div class="promo-card">
+            <video autoplay muted loop>
+                <source src="1video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="Model 2.pdf" target="_blank" class="promo-button">View Products</a>
+        </div>
+        <div class="promo-card">
+            <video autoplay muted loop>
+                <source src="3video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="Models 1.pdf" target="_blank" class="promo-button">View Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section" id="featured-products">
+    <h2>FEATURED PRODUCTS</h2>
+
+    <!-- SEARCH BOX -->
+    <input type="text" id="searchBox" placeholder="Search product by name..." onkeyup="searchProducts()">
+
+    <div class="products" id="productList">
+
+        <!-- PRODUCT 1 -->
+        <div class="card">
+            <img src="tyre.png">
+            <div class="caption">Tyres</div>
+            <div class="price">$130</div>
+            <a class="btn-add" onclick="addToCart('Tyres')">+ Add to Cart</a>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="card">
+            <img src="booster.png">
+            <div class="caption">Booster</div>
+            <div class="price">$45</div>
+            <a class="btn-add" onclick="addToCart('Booster')">+ Add to Cart</a>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="card">
+            <img src="engine.png">
+            <div class="caption">Engine</div>
+            <div class="price">$85</div>
+            <a class="btn-add" onclick="addToCart('Engine')">+ Add to Cart</a>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="card">
+            <img src="bike ligt.png">
+            <div class="caption">Bike Light</div>
+            <div class="price">$25</div>
+            <a class="btn-add" onclick="addToCart('Bike Light')">+ Add to Cart</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- LOCATION MAP SECTION -->
+<section class="location-section">
+    <h2>VISIT OUR STORE</h2>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.1832375495247!2d-122.0842499846813!3d37.42199997982607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba02425dad8f%3A0x6c296c66619367e0!2sGoogleplex!5e0!3m2!1sen!2sus!4v1641234567890!5m2!1sen!2sus"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-overlay">
+            <h3>Apsonic Store</h3>
+            <p><i class="fas fa-map-marker-alt"></i>123 Auto Parts Street</p>
+            <p><i class="fas fa-phone"></i>+1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i>info@apsonic.com</p>
+            <p><i class="fas fa-clock"></i>Mon-Sat: 8AM - 6PM</p>
+        </div>
+    </div>
+</section>
+
+<!-- MODERN FOOTER -->
+<footer>
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3>About Apsonic</h3>
+            <p>Your trusted partner for quality automotive parts and accessories. We deliver excellence in every product.</p>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#featured-products">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> [Your Address Here]</li>
+                <li><i class="fas fa-phone"></i> [Your Phone Number]</li>
+                <li><i class="fas fa-envelope"></i> [Your Email]</li>
+                <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Apsonic. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: var(--brand-orange);"></i></p>
+    </div>
+</footer>
+
+<!-- Floating Action Buttons -->
+<div class="hover-buttons">
+    <button class="hover-button" onclick="toggleChat()">
+        <i class="fas fa-robot"></i>
+        <span>APSONIC CHAT BOT</span>
+    </button>
+    <a class="hover-button whatsapp" href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>WHATSAPP</span>
+    </a>
+</div>
+
+<!-- Messenger-Style Chat Section -->
+<div class="chat-section" id="chatSection">
+    <div class="chat-header">
+        <div class="chat-header-title">
+            <i class="fas fa-headset"></i>
+            <span>Apsonic Support</span>
+        </div>
+        <button class="chat-close" onclick="toggleChat()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+            <div class="message-bubble">
+                Hi! 👋 Welcome to Apsonic. How can I help you today?
+            </div>
+        </div>
+    </div>
+
+    <div class="typing-indicator" id="typingIndicator">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="chat-input-area">
+        <input type="text" id="userMessage" placeholder="Type a message..." onkeypress="handleEnter(event)">
+        <button class="send-button" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+/* MOBILE MENU TOGGLE */
+function toggleMobileMenu() {
+    const headerNav = document.querySelector('.header-nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    headerNav.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+}
+
+/* SMOOTH SCROLLING */
+document.querySelectorAll('nav.header-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu after clicking
+                const headerNav = document.querySelector('.header-nav');
+                const menuToggle = document.querySelector('.menu-toggle');
+                headerNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        }
+    });
+});
+
+/* SIMPLE ADD TO CART LOGIC */
+function addToCart(item){
+    const alertModal = document.createElement('div');
+    alertModal.style.cssText = `
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5); display: flex; align-items: center;
+        justify-content: center; z-index: 10000;
+    `;
+    alertModal.innerHTML = `
+        <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 300px;">
+            <p style="margin: 0 0 15px 0; color: #222;">${item} has been added to cart.</p>
+            <button onclick="this.closest('div').parentElement.remove()" style="background: var(--brand-green); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">OK</button>
+        </div>
+    `;
+    document.body.appendChild(alertModal);
+    setTimeout(() => alertModal.remove(), 3000);
+}
+
+/* SEARCH FUNCTION */
+function searchProducts() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let name = card.querySelector(".caption").textContent.toLowerCase();
+        card.style.display = name.includes(input) ? "" : "none";
+    });
+}
+
+/* MESSENGER-STYLE CHATBOT FUNCTIONALITY */
+function toggleChat() {
+    const chatSection = document.getElementById('chatSection');
+    if (chatSection.style.display === 'none' || chatSection.style.display === '') {
+        chatSection.style.display = 'flex';
+        // Auto-scroll to bottom when opening
+        setTimeout(() => {
+            const messages = document.getElementById('chatMessages');
+            messages.scrollTop = messages.scrollHeight;
+        }, 100);
+    } else {
+        chatSection.style.display = 'none';
+    }
+}
+
+function handleEnter(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function sendMessage() {
+    const userMessageInput = document.getElementById('userMessage');
+    const userMessage = userMessageInput.value.trim();
+    const chatMessages = document.getElementById('chatMessages');
+    const typingIndicator = document.getElementById('typingIndicator');
+
+    if (userMessage) {
+        // Add user message
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.className = 'message user';
+        userMessageDiv.innerHTML = `
+            <div class="message-bubble">${escapeHtml(userMessage)}</div>
+        `;
+        chatMessages.appendChild(userMessageDiv);
+
+        // Clear input
+        userMessageInput.value = '';
+
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Show typing indicator
+        typingIndicator.style.display = 'block';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Simulate bot response after a delay
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'message bot';
+
+            // Simple bot responses
+            let botResponse = getBotResponse(userMessage.toLowerCase());
+
+            botMessageDiv.innerHTML = `
+                <div class="message-bubble">${botResponse}</div>
+            `;
+            chatMessages.appendChild(botMessageDiv);
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000 + Math.random() * 1000);
+    }
+}
+
+function getBotResponse(message) {
+    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+        return "Hello! 👋 How can I assist you today?";
+    } else if (message.includes('price') || message.includes('cost')) {
+        return "Our products range from $25 to $130. You can browse all products on our website!";
+    } else if (message.includes('shipping') || message.includes('delivery')) {
+        return "We offer free shipping on orders over $100. Standard delivery takes 3-5 business days.";
+    } else if (message.includes('help') || message.includes('support')) {
+        return "I'm here to help! You can ask me about products, pricing, shipping, or contact our support team directly.";
+    } else if (message.includes('product') || message.includes('item')) {
+        return "We have a wide range of automotive parts including tyres, boosters, engines, and bike lights. What are you looking for?";
+    } else if (message.includes('thank')) {
+        return "You're welcome! 😊 Is there anything else I can help you with?";
+    } else if (message.includes('bye') || message.includes('goodbye')) {
+        return "Goodbye! Have a great day! Feel free to reach out anytime. 👋";
+    } else {
+        return "Thank you for your message! 😊 Our support team will get back to you shortly. You can also reach us via WhatsApp for immediate assistance.";
+    }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+</script>
+
+</body>
+</html>
