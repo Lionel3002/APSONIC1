@@ -306,7 +306,7 @@ nav .nav-inner a:hover {
     font-weight: 600;
     font-size: 13px;
     text-align: center;
-    background: var(--brand-orange);
+    background: linear-gradient(135deg, #ff6b35 0%, #ffb84d 50%, #ffd93d 100%);
     color: white;
     padding: 8px 18px;
     border-radius: 20px;
@@ -315,10 +315,11 @@ nav .nav-inner a:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
     border: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .promo-button:hover {
-    background: var(--brand-orange-dark);
+    background: linear-gradient(135deg, #e55a2b 0%, #e5a83d 50%, #e5c62d 100%);
     transform: translateX(-50%) translateY(-3px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
@@ -379,6 +380,121 @@ nav .nav-inner a:hover {
     outline: none;
     border-color: var(--brand-green);
     box-shadow: 0 0 0 2px rgba(31, 163, 72, 0.1);
+}
+
+/* NEWS AND PRODUCT PROMOTION SECTION */
+.news-promo-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 20px;
+    margin: 60px 0;
+}
+
+.news-promo-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.news-promo-item {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-promo-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.section-title {
+    background: linear-gradient(135deg, #ff6b35 0%, #ffb84d 50%, #ffd93d 100%);
+    color: white;
+    padding: 25px 30px;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title i {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.video-container {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-promo-item:hover .video-container video {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 40px 30px 30px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.news-promo-item:hover .video-overlay {
+    transform: translateY(0);
+}
+
+.video-overlay h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.video-overlay p {
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+}
+
+.overlay-btn {
+    background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-dark) 100%);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.overlay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
 /* LOCATION MAP SECTION */
@@ -449,37 +565,53 @@ nav .nav-inner a:hover {
     margin-right: 8px;
 }
 
-/* MODERN FOOTER */
+/* MODERN FOOTER WITH GRADIENT */
 footer {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: #ddd;
+    background: linear-gradient(135deg, #ff6b35 0%, #ffb84d 50%, #ffd93d 100%);
+    color: #fff;
     padding: 60px 20px 20px;
     margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+    z-index: 1;
 }
 
 .footer-container {
+    position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
     margin-bottom: 40px;
+    z-index: 2;
 }
 
 .footer-section h3 {
-    color: var(--brand-green);
+    color: white;
     font-size: 18px;
     margin-bottom: 20px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .footer-section p,
 .footer-section ul {
     font-size: 14px;
     line-height: 1.8;
-    color: #bbb;
+    color: rgba(255,255,255,0.9);
 }
 
 .footer-section ul {
@@ -493,13 +625,14 @@ footer {
 }
 
 .footer-section ul li a {
-    color: #bbb;
+    color: rgba(255,255,255,0.9);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: var(--brand-orange);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .footer-section .social-icons {
@@ -514,24 +647,28 @@ footer {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     color: #fff;
     font-size: 18px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .footer-section .social-icons a:hover {
-    background: var(--brand-orange);
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     padding-top: 20px;
     text-align: center;
     font-size: 13px;
-    color: #888;
+    color: rgba(255,255,255,0.9);
+    z-index: 2;
 }
 
 .footer-logo {
@@ -569,7 +706,7 @@ footer {
 .hover-button {
     position: relative;
     cursor: pointer;
-    background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-green-dark) 100%);
+    background: linear-gradient(135deg, #ff6b35 0%, #ffb84d 50%, #ffd93d 100%);
     color: white;
     border: none;
     border-radius: 30px;
@@ -820,6 +957,10 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
     }
+    
+    .news-promo-container {
+        gap: 30px;
+    }
 }
 
 /* Tablets */
@@ -833,6 +974,11 @@ footer {
     .promo-card {
         height: 200px;
         width: 200px;
+    }
+    
+    .news-promo-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .location-section h2 {
@@ -890,6 +1036,24 @@ footer {
     
     .card img {
         height: 120px;
+    }
+    
+    .news-promo-section {
+        padding: 40px 15px;
+        margin: 40px 0;
+    }
+    
+    .section-title {
+        padding: 20px 25px;
+        font-size: 1.4rem;
+    }
+    
+    .section-title i {
+        font-size: 1.6rem;
+    }
+    
+    .video-container {
+        height: 300px;
     }
 
     .chat-section {
@@ -982,6 +1146,20 @@ footer {
     .btn-add {
         padding: 6px 10px;
         font-size: 14px;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    
+    .section-title i {
+        font-size: 1.4rem;
+    }
+    
+    .video-container {
+        height: 250px;
     }
 
     .hover-button {
@@ -1078,6 +1256,10 @@ footer {
     .map-container {
         height: 200px;
     }
+    
+    .video-container {
+        height: 220px;
+    }
 }
 </style>
 </head>
@@ -1093,8 +1275,8 @@ footer {
         <a href="#hero">HOME</a>
         <a href="#featured-products">ABOUT</a>
         <a href="#featured-products">SHOP</a>
-        <a href="URL_HERE">PORTFOLIO</a>
-        <a href="URL_HERE">BLOG</a>
+        <a href="URL_HERE">NEWS</a>
+
     </nav>
     <button class="menu-toggle" onclick="toggleMobileMenu()">
         <span></span>
@@ -1190,6 +1372,47 @@ footer {
     </div>
 </section>
 
+<!-- NEWS AND PRODUCT PROMOTION SECTION -->
+<section class="news-promo-section">
+    <div class="news-promo-container">
+        <div class="news-promo-item">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i>
+                NEWS
+            </h2>
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="1video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay">
+                    <h3>Latest Updates</h3>
+                    <p>Stay updated with the latest automotive industry news and innovations</p>
+                    <a href="#" class="overlay-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news-promo-item">
+            <h2 class="section-title">
+                <i class="fas fa-bullhorn"></i>
+                PRODUCT PROMOTION
+            </h2>
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="2video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay">
+                    <h3>Special Offers</h3>
+                    <p>Discover exclusive deals and promotions on premium automotive parts</p>
+                    <a href="#" class="overlay-btn">View Offers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- LOCATION MAP SECTION -->
 <section class="location-section">
     <h2>VISIT OUR STORE</h2>
@@ -1210,7 +1433,7 @@ footer {
     </div>
 </section>
 
-<!-- MODERN FOOTER -->
+<!-- MODERN FOOTER WITH ORANGE-YELLOW GRADIENT -->
 <footer>
     <div class="footer-container">
         <!-- About Section -->
@@ -1262,7 +1485,7 @@ footer {
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; 2025 Apsonic. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: var(--brand-orange);"></i></p>
+        <p>&copy; 2025 Apsonic. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: white;"></i></p>
     </div>
 </footer>
 
